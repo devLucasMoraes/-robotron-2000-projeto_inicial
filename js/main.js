@@ -6,22 +6,24 @@ robotron.addEventListener('click', (evento) => {
  */
 
 
-const braco = document.querySelector('#braco')
+
 
 const controle = document.querySelectorAll(".controle-ajuste")
 
 controle.forEach( (elemento) => {
     elemento.addEventListener('click', (evento) => {
-        console.log(evento.target)
-        manipulaDados(evento.target.textContent)
+        console.log(evento.target.parentNode)
+        manipulaDados(evento.target.textContent, evento.target.parentNode)
     })
 })
 
 
-function manipulaDados (operacao) {
+function manipulaDados (operacao, controle) {
+    const peca = controle.querySelector('.controle-contador')
+    console.log(peca)
     if( operacao === "+") {
-        braco.value = parseInt(braco.value) + 1
+        peca.value = parseInt(peca.value) + 1
     } else {
-        braco.value = parseInt(braco.value) - 1
+        peca.value = parseInt(peca.value) - 1
     }
 }
